@@ -1,0 +1,152 @@
+<% layout('layouts/boilerplate') %>
+
+
+
+<div class="col-7 offset-2">
+    <h1 class="text-center"><%=campground.title%> Check-Out Form</h1>
+    <%- include('./partials/flash')%>
+    <form class="needs-validation" id="checkOutForm"  action="/campgrounds/<%=booking.hotelId%>/bookings/<%=booking._id%>/checkOut" method="POST" novalidate>
+        <!-- First name -->
+        <div class="form-group">
+          <label for="fname">Customer's First Name:</label>
+          <input type="text" class="form-control"  value=<%=booking.fname%> disabled>
+          
+    
+        </div>
+        <br>
+        <!-- Last Name -->
+        <div class="form-group">
+            <label for="lname">Customer's Last Name:</label>
+            <input type="text" class="form-control"  value=<%=booking.lname%> disabled>
+            
+        <br>
+        </div>
+        <!-- Address -->
+        <div class="form-group">
+            <label for="address">Customer's Address:</label>
+            <textarea class="form-control" name="address" id="address" rows="2" disabled><%=booking.address%>
+            </textarea>
+            
+        </div>
+        <br>
+        <!-- contactNo -->
+        <div class="form-group">
+            
+            <label for="contact">Customer's Contact No.:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">+91</div>
+                </div>
+                <input type="text" class="form-control"  value=<%=booking.contact%> disabled>
+                
+            </div>
+            
+      
+        </div>
+        
+        <br>
+        <!-- roomNumber -->
+        <div class="form-group">
+            <label for="room">Room Number:</label>
+            <input type="number" class="form-control"   value=<%=booking.room%> disabled>
+            
+      
+        </div>
+        <br>
+       
+        <!-- price -->
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">₹</div>
+                </div>
+                <input type="number" class="form-control" value="<%=booking.price%>" disabled>
+                <input type="hidden" class="form-control" name="price" id="price" value="<%=booking.price%>" >>>
+                
+                
+            </div>
+        </div>
+        <br>
+        <!-- roomType -->
+        <div>
+            <label for="roomType">Room Type:</label>
+            <input type="text" class="form-control"  value="<%=booking.roomType%>" disabled>
+            
+        </div>
+        <br>
+        <!-- checkIn date -->
+        <div>
+            <label for="In">Check-In Date:</label>
+            <input type="date" class="form-control" id="In" name="In" value="<%=booking.In%>" disabled>
+           
+        </div>
+        <br>
+        <!-- checkOut -->
+        <div>
+            <label for="Out">Check-Out Date:</label>
+            <input type="date" class="form-control" id="Out" name="Out" value="<%=booking.Out%>" required>
+            <div class="valid-feedback">
+                  Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please provide a vaild Check-Out date.
+            </div>
+        </div>
+        <br>
+        <!-- addCost -->
+        <div class="form-group">
+            <label for="addCost">Addition Cost:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">₹</div>
+                </div>
+                <input type="number" class="form-control" id="addCost" name="addCost" value=0.00>
+                
+            </div>
+        </div>
+        <br>
+        <!-- discount -->
+        <div class="form-group">
+            <label for="discount">Discount:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">₹</div>
+                </div>
+                <input type="number" class="form-control" id="discount" name="discount" value=0.00>
+                
+            </div>
+        </div>
+        <br>
+        <!-- tax -->
+        <div class="form-group">
+            <label for="tax">Tax:</label>
+            <div class="input-group">
+                <div class="input-group-postend">
+                  <div class="input-group-text">%</div>
+                </div>
+                <input type="number" class="form-control" id="tax" name="tax" value=18>
+                
+            </div>
+        </div>
+        <br>
+        <!-- advance -->
+        <div class="form-group">
+            <label for="advance">Advance Payment:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">₹</div>
+                </div>
+                <input type="number" class="form-control" id="advance" name="advance" value=<%= booking.advance*1.00 %>>
+                
+            </div>
+        </div>
+        <br>
+        <!-- totAmt: will be calulated and update by JS code -->
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="totAmt" name="totAmt">    
+        </div>
+        <a class="btn btn-secondary" href="/campgrounds/<%=campground._id%>/bookings?booking=trans">&nbsp Back &nbsp</a>
+        <button type="submit" class="btn btn-primary">Generate Bill</button> 
+      </form>
+</div>

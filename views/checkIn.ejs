@@ -1,0 +1,140 @@
+<% layout('layouts/boilerplate') %>
+
+
+
+<div class="col-7 offset-2">
+    <h1 class="text-center"><%=campground.title%> Check-In Form</h1>
+    <%- include('./partials/flash')%>
+    <form class="needs-validation" action="/campgrounds/<%=campground._id%>/bookings/checkIn" method="POST" novalidate>
+        <!-- First name -->
+        <div class="form-group">
+          <label for="fname">Customer's First Name:</label>
+          <input type="text" class="form-control" id="fname" name="fname" required>
+          <div class="valid-feedback">
+              Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please enter First Name.
+          </div>
+    
+        </div>
+        <br>
+        <!-- Last Name -->
+        <div class="form-group">
+            <label for="lname">Customer's Last Name:</label>
+            <input type="text" class="form-control" id="lname" name="lname"  required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please enter Last Name.
+            </div>
+        <br>
+        </div>
+        <!-- Address -->
+        <div class="form-group">
+            <label for="address">Customer's Address:</label>
+            <textarea class="form-control" name="address" id="address" rows="2" required></textarea>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please provide address.
+            </div>
+        </div>
+        <br>
+        <!-- contactNo -->
+        <div class="form-group">
+            
+            <label for="contact">Customer's Contact No.:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">+91</div>
+                </div>
+                <input type="text" class="form-control" id="contact" name="contact" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                  Please valid Contact Number.
+                </div>
+            </div>
+            
+      
+        </div>
+        
+        <br>
+        <!-- roomNumber -->
+        <div class="form-group">
+            <label for="room">Room Number:</label>
+            <input type="hidden" id="room" name="room"  value=<%=roomId%>>
+            <input type="number" class="form-control"   value=<%=roomId%> disabled>
+            
+      
+        </div>
+        <br>
+       
+        <!-- price -->
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">₹</div>
+                </div>
+                <input type="number" class="form-control" value="<%=campground.price*(1+ roomId%2+ roomId%3)%>" disabled>
+                <input type="hidden" id="price" name="price" value="<%=campground.price*(1+roomId%2 + roomId%3)%>">
+                
+            </div>
+        </div>
+        <br>
+        <!-- roomType -->
+        <div>
+            <label for="roomType">Room Type:</label>
+            <!-- return value -->
+            <input type="hidden" id="roomType" name="roomType" value="<%=roomType[(1+roomId%2+roomId%3)]%>" >
+            <!-- for showCase -->
+            <input type="text" class="form-control"  value="<%=roomType[(1+roomId%2+roomId%3)]%>" disabled>
+            
+        </div>
+        <br>
+        <!-- checkIn date -->
+        <div>
+            <label for="In">Check-In Date:</label>
+            <input type="date" class="form-control" id="In" name="In" required>
+            <div class="valid-feedback">
+                  Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please provide a vaild checkIn date.
+            </div>
+        </div>
+        <br>
+        <!-- checkOut -->
+        <div>
+            <label for="Out">Check-Out Date:</label>
+            <input type="date" class="form-control" id="Out" name="Out" required>
+            <div class="valid-feedback">
+                  Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please provide a vaild Check-Out date.
+            </div>
+        </div>
+        <br>
+        
+        <!-- advance payment -->
+        <div class="form-group">
+            <label for="advance">Advance Payment:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">₹</div>
+                </div>
+                <input type="number" class="form-control" id="advance" name="advance" value=0 required>
+                
+            </div>
+        </div>
+        <br>
+        <a class="btn btn-secondary" href="/campgrounds/<%=campground._id%>/bookings?booking=rooms">&nbsp Back &nbsp</a>
+        <button type="submit" class="btn btn-primary">Check-In</button>
+      </form>
+</div>

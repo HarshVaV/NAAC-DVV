@@ -1,0 +1,27 @@
+.backArrow{
+    
+    position:absolute;
+    z-index:100;
+    margin-top:0.5rem;
+    margin-left:2.5rem;
+}
+.navbar{
+    z-index: 99;
+}
+body{
+    /* overflow-x: hidden; */
+    max-width: 100vw;
+    /* background-color: rgba(rgba(0, 247, 255, 0.292), green, blue, alpha);
+    opacity: 5%; */
+}
+#detailBody{
+    position: relative;
+    left:-01vw;
+}
+
+#delBtnDiv{
+    align-self: end;
+    justify-self: end;
+    text-align: end;
+    align-items: flex-end;
+}

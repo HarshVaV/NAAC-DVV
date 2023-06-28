@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+
+
+
+<div class="col-4 offset-4 mt-5">
+    <form action="/login" method="post">
+         <!-- UserId -->
+         <div class="form-group">
+            <label class="mb-2 fw-bold" for="userId">User Id:</label>
+            <input type="text" name="userId" class="form-control">       
+          </div>
+
+          <br>
+
+        <!-- password -->
+         <div class="form-group">
+            <label class="mb-2 fw-bold" name="password" for="password">Password:</label>
+            <input type="text" name="password" class="form-control">       
+          </div>
+          <br>
+
+          <button class="btn btn-primary" type="submit">Login</button>
+
+          <p class="mt-4 text-center">
+            <a href="/institution/new">Register as new HEI ?</a>
+          </p>
+    </form>
+</div>

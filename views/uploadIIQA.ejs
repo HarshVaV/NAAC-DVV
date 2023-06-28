@@ -1,0 +1,158 @@
+<% layout('layouts/boilerplate') %>
+
+
+<div class="col-6 offset-3">
+    <h1 class="text-center">New Hotel</h1>
+    <form class="needs-validation" action="/institution/<%=userId%>/iiqa
+    " method="post" novalidate > <!--turnOff HTML Default validation Off -->
+
+
+      <!-- Number of phd faculty -->
+      <div class="form-group">
+            
+        <label for="enroll" class="fw-bold">Number of Phd faculties:</label>
+        <div class="input-group">
+  
+            <input type="number" class="form-control" id="phd" name="phd" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please valid Number.
+            </div>
+        </div>
+        
+  
+    </div>
+    
+    <br>
+
+      <!-- Number of masters faculty -->
+      
+      <div class="form-group">
+            
+        <label for="enroll" class="fw-bold">Number of Masters faculties:</label>
+        <div class="input-group">
+  
+            <input type="number" class="form-control" id="master" name="master" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please valid Number.
+            </div>
+        </div>
+        
+  
+    </div>
+    
+    <br>
+
+    <!-- Number of non-teaching staff -->
+    <div class="form-group">
+            
+      <label for="nonTeaching" class="fw-bold">Number of Non-teaching Staff:</label>
+      <div class="input-group">
+
+          <input type="number" class="form-control" id="nonTeaching" name="nonTeaching" required>
+          <div class="valid-feedback">
+              Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please valid Number.
+          </div>
+      </div>
+      
+
+  </div>
+  
+  <br>
+
+    <!-- Area of campus in sq.m -->
+
+    <div class="form-group">
+            
+      <label for="campus" class="fw-bold">Area of Campus (in sq meters):</label>
+      <div class="input-group">
+
+          <input type="number" class="form-control" id="campus" name="campus" required>
+          <div class="valid-feedback">
+              Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please valid Number.
+          </div>
+      </div>
+      
+
+  </div>
+  
+  <br>
+
+    <!-- area of campus occupied -->
+
+    <div class="form-group">
+            
+      <label for="occupied" class="fw-bold">Area of Campus Occupied (in sq meters):</label>
+      <div class="input-group">
+
+          <input type="number" class="form-control" id="occupied" name="occupied" required>
+          <div class="valid-feedback">
+              Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please valid Number.
+          </div>
+      </div>
+      
+
+  </div>
+  
+  <br>
+
+   <!-- area decicaded to sports -->
+   <div class="form-group">
+            
+    <label for="sports" class="fw-bold">Area of campus under sports facilities (in sq meters):</label>
+    <div class="input-group">
+
+        <input type="number" class="form-control" id="sports" name="sports" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please valid Number.
+        </div>
+    </div>
+    
+
+</div>
+
+<br>
+
+    <!-- amount spend on annual maintainence -->
+
+    <div class="form-group">
+            
+      <label for="maintain" class="fw-bold">Sum spent on maintainence(in LPA):</label>
+      <div class="input-group">
+
+          <input type="number" class="form-control" id="maintain" name="maintain" required>
+          <div class="valid-feedback">
+              Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please valid Number.
+          </div>
+      </div>
+      
+
+  </div>
+  
+  <br>
+       
+        <!-- <a class="btn btn-secondary" href="/campgrounds">&nbsp Back &nbsp</a> -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+  

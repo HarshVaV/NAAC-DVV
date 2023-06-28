@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+
+
+
+<div class="col-4 offset-4 mt-5">
+    <form action="/institution/<%=userId%>/ssr" method="post">
+         <!-- doc1 -->
+         <div class="form-group">
+            <label class="mb-2 fw-bold" for="doc1">Upload Document1 (.pfd):</label>
+            <input type="text" name="doc1" class="form-control">       
+          </div>
+
+          <br>
+
+        <!-- doc2 -->
+        <div class="form-group">
+            <label class="mb-2 fw-bold" for="doc2">Upload Document2 (.pfd):</label>
+            <input type="text" name="doc2" class="form-control">       
+          </div>
+
+          <br>
+
+          <!-- doc3 -->
+         <div class="form-group">
+            <label class="mb-2 fw-bold" for="doc3">Upload Document3 (.pfd):</label>
+            <input type="text" name="doc3" class="form-control">       
+          </div>
+
+          <br>
+
+          <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>

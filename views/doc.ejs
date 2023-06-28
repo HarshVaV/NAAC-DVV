@@ -1,0 +1,51 @@
+<% layout('layouts/boilerplate') %>
+  <h1 class="my-5 mt-3 text-center "><%=i.title%><h1>
+  <table class="table table-bordered mt-5">
+    <thead class="fs-3">
+      <tr>
+        <th>Document Name</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+
+
+    <tbody class="fs-5">
+            <tr>
+                <th>Document 1</th>
+                <th>
+                    <a href="<%=i.doc1%>">
+                        View
+                    </a>
+                </th>
+            </tr>
+            
+            <tr>
+                <th>Document 2</th>
+                <th>
+                    <a href="<%=i.doc2%>">
+                        View
+                    </a>
+                </th>
+            </tr>
+
+            <tr>
+                <th>Document 3</th>
+                <th>
+                    <a href="<%=i.doc3%>">
+                        View
+                    </a>
+                </th>
+            </tr>
+
+    </tbody>
+
+  </table>
+  <div class="col-6 offset-5 mt-5">
+      <form action="/agent/<%=i._id%>/pass" method="post" class="d-inline ms-5 offset-3">
+        <button type="submit" class="btn btn-primary">Passed</button>
+      </form>
+      <form action="/agent/<%=i._id%>/fail" method="post" class="d-inline">
+        <button type="submit" class="btn btn-danger">Failed</button>
+      </form>
+
+  </div>

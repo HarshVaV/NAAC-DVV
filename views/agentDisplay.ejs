@@ -1,0 +1,34 @@
+<% layout('layouts/boilerplate') %>
+  <h1 class="my-5 mt-3 text-center ">List of Institutions to be verify<h1>
+      <table class="table table-bordered mt-5">
+        <thead class="fs-3">
+          <tr>
+            <th>Instituion</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+
+        <tbody class="fs-5">
+          <% if (institutions.length==0) { %>
+            <h2>No More Institution to diplay</h2>
+            <% }else{ %>
+              <% for(const i of institutions){ %>
+                <% if (i.stages[2]==1.5) { %>
+                  <tr>
+                    <th>
+                      <%= i.title %>
+                    </th>
+                    <th>
+                      <a href="/agent/doc/<%=i._id%>">
+                        View
+                      </a>
+                    </th>
+                  </tr>
+
+                  <% } %>
+                <% } %>
+              <% } %>
+        </tbody>
+
+      </table>

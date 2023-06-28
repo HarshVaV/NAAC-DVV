@@ -1,0 +1,77 @@
+<% layout('layouts/boilerplate') %>
+  <h1 class="my-5 mt-3 text-center"><%= instituition.title %></h1>
+  <table class="table table-bordered mt-5">
+    <thead>
+      <tr>
+        <th>Process</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <!-- 
+  if(stage[1]==-1)  Failed
+  if(stage[1]==-1.5)Not Allowed
+  if(stage[1]==0)   Pending
+  if(stage[1]==1)   <a>Proceed<a>
+  if(stage[1]==1.5) Ongoing
+  if(stage[1]==2)   Passed -->
+
+
+
+    <tbody>
+      <tr>
+        <th>Upload IIQA</th>
+        <td>
+          <% if (instituition.stages[1]==-1) { %>
+            Failed
+            <% } else if(instituition.stages[1]==-1.5){%>
+              Not Allowed
+              <% } else if(instituition.stages[1]==0){%>
+                Pending
+                <% } else if(instituition.stages[1]==1){%>
+                  <a href="/institution/<%=instituition.userId%>/iiqa">Proceed</a>
+                  <% } else if(instituition.stages[1]==1.5){%>
+                    Ongoing
+                    <% } else if(instituition.stages[1]==2){%>
+                      Passed
+                      <% }%>
+        </td>
+      </tr>
+      <tr>
+        <th>File SSR</th>
+        <td>
+          <% if (instituition.stages[2]==-1) { %>
+            Failed
+            <% } else if(instituition.stages[2]==-1.5){%>
+              Not Allowed
+              <% } else if(instituition.stages[2]==0){%>
+                Pending
+                <% } else if(instituition.stages[2]==1){%>
+                  <a href="/institution/<%=instituition.userId%>/ssr">Proceed</a>
+                  <% } else if(instituition.stages[2]==1.5){%>
+                    Ongoing
+                    <% } else if(instituition.stages[2]==2){%>
+                      Passed
+                      <% }%>
+        </td>
+      </tr>
+      <tr>
+        <th>Process of Evaluation</th>
+        <td>
+          <% if (instituition.stages[3]==-1) { %>
+            Failed
+            <% } else if(instituition.stages[3]==-1.5){%>
+              Not Allowed
+              <% } else if(instituition.stages[3]==0){%>
+                Pending
+                <% } else if(instituition.stages[3]==1){%>
+                  <a href="instituition/iiqa">Proceed</a>
+                  <% } else if(instituition.stages[3]==1.5){%>
+                    Ongoing
+                    <% } else if(instituition.stages[3]==2){%>
+                      Passed
+                      <% }%>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>

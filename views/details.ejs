@@ -1,0 +1,120 @@
+<% layout('layouts/boilerplate') %>
+<%- include('./partials/flash')%>
+<div class="backArrow">
+  <a href="/campgrounds" ><img src="/images/back.png" height=40em></a>
+</div>
+<div class="row" id="detailBody">
+  <div class="card col-md-6  px-0 me-3 <%= campground.reviews.length>0?"offset-1":"offset-3" %>" >
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                  <img class="d-block w-100" src="<%=campground.image%>" alt="First slide">
+              </div>
+              <div class="carousel-item ">
+                  <img class="d-block w-100" src="<%=campground.lobbyImg%>" alt="Second slide">
+              </div>
+              <div class="carousel-item ">
+                  <img class="d-block w-100" src="<%=campground.roomImg%>" alt="Third slide">
+              </div>
+              <div class="carousel-item ">
+                  <img class="d-block w-100" src="<%=campground.bathroomImg%>" alt="Fourth slide">
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  
+                </button>
+          </div>
+  
+      </div>
+      
+      <div class="card-body">
+        <h2 class="card-title"><%=campground.title%></h2>
+        <small class="text-muted fs-5"><%=campground.location%></small>
+        <p class="card-text mt-3"><%=campground.description%></p>
+        <p class="card-text mt-3 fs-5"> <strong>INR. <%=campground.price%> per Night</strong> </p>
+        <a href="/campgrounds/edit/<%=campground.id%>" class="btn btn-primary">Edit</a>
+        <a href="/campgrounds/<%=campground.id%>/bookings?booking=trans" class="btn btn-warning">Bookings</a>
+        <form action="/campgrounds/<%=campground.id%>?_method=DELETE" method="post" style="display: inline;">
+          <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+      </div>
+      <!-- Review Creation Section -->
+      <div id="Review" class="m-5 ms-2">
+        <h2>Leave a Review</h2>
+        <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="mb-3 needs-validation" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="rating">Rating</label>
+                <input class="form-range" type="range" min="1" max="5" name="rating" id="rating">
+            </div>
+            <div class="form-group mb-3">
+              <label for="comment">Review:</label>
+              <textarea class="form-control" name="comment" id="comment" rows="3" required></textarea>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please provide address.
+              </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+  </div>
+
+  <!-- Review Display Section -->
+  <% if (campground.reviews.length>0) { %>
+    <div class="col-md-4">
+      
+      <div class="ms-1 mt-2">
+        <span class="fw-bold fs-3">Customer's Reviews:</span>
+        <!-- Pagination -->
+        <% if (campground.reviews.length>0) { %>
+          
+          <nav aria-label="hotels ">
+              <ul class="pagination pages justify-content-center mx-auto mt-4">
+                <li id="prevBtn"class="page-item <%=pgNo == 1 ? 'disabled' : ''%>" >
+                  <a class="page-link" href="/campgrounds/<%= campground._id %>?pgNo=<%=pgNo-1%>" >
+                      Prev
+                  </a>
+                </li>
+                <!-- iternation=Max number of pages -->
+                <!-- <% for(let i=1;i<=Math.ceil((campground.reviews).length/pgSize);i++){ %>
+                  <li class="page-item <%= pgNo == i ? 'active' : ''%>">
+                      <a class="page-link " href="/campgrounds/<%= campground._id %>?pgNo=<%=i%>"  >
+                          <%=i%>
+                      </a>
+                    </li>
+                <% } %> -->
+                <li id="nextBtn" class="page-item <%= pgNo == Math.ceil((campground.reviews).length/pgSize)? 'disabled' : ''%>">
+                  <a class="page-link" href="/campgrounds/<%= campground._id %>?pgNo=<%=pgNo+1%>">Next</a>
+                </li>
+              </ul>
+          </nav>
+        <%}%>
+      </div>
+      <% for(let i=((pgNo-1)*pgSize);i<Math.min(pgSize*pgNo,(campground.reviews).length);i++) { %>
+      <div class="card mb-3 ">
+          <div class="card-body">
+              <h5 class="card-title fs-5" ><%= campground.reviews[i].rating %></h5>
+              <p class="card-text"><%= campground.reviews[i].comment %></p>
+              <form action="/campgrounds/<%=campground._id%>/<%=campground.reviews[i]._id%>?_method=DELETE" method="POST">
+                <div id="delBtnDiv">
+                  <button class="btn btn-sm btn-danger align-self-end" type="submit">Delete</button>
+                </div>
+              </form>
+          </div>
+      </div>
+      <% } %>
+
+      
+        <footer class="text-center fw-bold fs-6">Showings reviews  <%=((pgNo-1)*pgSize)+1%>- <%=Math.min((pgNo)*pgSize,(campground.reviews).length)%> Out of <%=(campground.reviews).length%></footer>
+      </div>
+  <% } %>
+    
+    
+</div>

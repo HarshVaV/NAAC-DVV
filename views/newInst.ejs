@@ -1,0 +1,130 @@
+<% layout('layouts/boilerplate') %>
+
+
+  <div class="col-6 offset-3">
+    <h1 class="text-center my-3">New HEI Registration</h1>
+    <form class="needs-validation" action="/institution/new" method="post" novalidate>
+      <!--turnOff HTML Default validation Off -->
+
+      <!-- Inst Name -->
+      <div class="form-group">
+        <label for="title" class="fw-bold">Institution Name:</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please input name.
+        </div>
+      </div>
+
+      <br>
+
+      <!-- Inst mail-id -->
+      <div class="form-group">
+        <label for="mail" class="fw-bold">Institution Email:</label>
+        <input type="text" class="form-control" id="mail" name="mail" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please input name.
+        </div>
+      </div>
+
+      <br>
+
+      <!-- Student enroll -->
+      <div class="form-group">
+
+        <label for="enroll" class="fw-bold">Number of Student Enroll:</label>
+        <div class="input-group">
+
+          <input type="text" class="form-control" id="enroll" name="enroll" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please valid Number.
+          </div>
+        </div>
+
+
+      </div>
+
+      <br>
+
+      <!-- Degree -->
+      <div class="form-group">
+        <label for="degrees" class="mb-3 fw-bold
+        ">Degrees Offered:</label> <br>
+        <% for(const deg of degrees){ %>
+          <span class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="degrees" value=<%=deg %> id="degrees">
+            <label class="form-check-label" for="degrees">
+              <%= deg %>
+            </label>
+          </span>
+
+          <% } %>
+      </div>
+      <br>
+
+      <!-- Courses -->
+      <div class="form-group">
+        <label for="courses" class="mb-3 fw-bold
+        ">Courses Offered:</label> <br>
+        <% for(const c of courses){ %>
+          <span class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="courses" value=<%=c %> id="courses">
+            <label class="form-check-label mb-1" for="courses">
+              <%= c %>
+            </label>
+          </span>
+
+          <% } %>
+      </div>
+      <br>
+
+      <!-- City -->
+      <div>
+        <label for="city" class="fw-bold">City:</label>
+        <input type="text" class="form-control" id="city" name="city" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a vaild city.
+        </div>
+      </div>
+      <br>
+
+      <!-- state -->
+      <div>
+        <label for="state" class="fw-bold">State:</label>
+        <input type="text" class="form-control" id="state" name="state" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a vaild state.
+        </div>
+      </div>
+      <br>
+      <!-- Address -->
+      <div>
+        <label for="address" class="fw-bold">Complete Address:</label>
+        <input type="text" class="form-control" id="address" name="address" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a vaild city.
+        </div>
+      </div>
+
+      <br>
+      <a class="btn btn-secondary" href="/login">&nbsp Back &nbsp</a>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>

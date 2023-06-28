@@ -1,0 +1,12 @@
+.table{
+    width:80vw;
+    margin:auto
+}
+.bookingForm{
+    display:flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+/* .form-check{
+    margin:2rem;
+} */

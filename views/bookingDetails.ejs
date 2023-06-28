@@ -1,0 +1,91 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="backArrow">
+  <a  href="/campgrounds/<%=campground._id %>" ><img src="/images/back.png" height=40em></a>
+</div>
+<H1 class="text-center mt-3"><%=campground.title %></H1>
+<form  class="bookingForm" action="/campgrounds/<%=campground._id%>/bookings" method="GET" id="theForm">
+  <div class="form-check m-4 mb-5">
+    <input class="form-check-input" type="radio" name="booking" id="bookTrans" value="trans" onChange="autoSubmit()" <%= option=="trans"?"checked":"" %>>
+    <label class="form-check-label" for="bookTrans" >
+      Bookings
+    </label>
+  </div>
+  
+  <div class="form-check m-4 mb-5">
+    <input class="form-check-input" type="radio" name="booking" id="UnOccupiedRooms" value="rooms" onChange="autoSubmit()" <%= option=="rooms"?"checked":"" %>>
+    <label class="form-check-label" for="UnOccupiedRooms">
+      Un-Occupied Rooms
+    </label>
+  </div>
+  
+</form>
+<% if (option=="trans"){ %>
+  <table class="table text-center">
+      <thead>
+        <tr>
+          <th scope="col" >Room ID</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">IN Date</th>
+          <th scope="col">OUT Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+          <% for(let b of booking){ %> 
+              <tr>
+                  <th scope="row"><%=b.room%></th>
+                  <td><%=b.fname%></td>
+                  <td><%=b.lname%></td>
+                  <td><%=b.In%></td>
+                  <td><%=b.Out%></td>
+                  <td >
+                    <% if (!b.totAmt) { %>
+                      <!-- i.e. Bill is Not genrated and guest didn't checkedOut -->
+                      <a class="btn btn-warning" href="/campgrounds/<%=campground.id%>/bookings/<%=b._id%>/checkOut">CheckOut</a>
+                      &nbsp                     
+                    <% }else{ %>
+                      <a class="btn btn-primary" href="/campgrounds/<%=campground.id%>/bookings/<%=b._id%>">View Bill</a>
+                      &nbsp   
+                    <% }%>
+                    <form class="d-inline" action="/campgrounds/<%=campground._id%>/bookings/<%=b._id%>?_method=DELETE" method="POST" >
+                      <button  class="btn btn-danger">DELETE</button>
+                    </form>
+                  </td>
+              </tr>
+          <% } %>
+          
+      
+      </tbody>
+    </table>
+
+<% } else { %>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col" >Room ID</th>
+        <th scope="col" >Type</th>
+        <th scope="col" >Price</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <% for(let r of campground.unOccupied){ %> 
+            <tr>
+                <th scope="row" ><%=r%></th>
+                <td><%=roomType[(1+r%2+r%3)] %></td>
+                <td><%=campground.price *(1+r%2+r%3) %></td>
+                <td>
+                    <a class="btn btn-warning" href="/campgrounds/<%=campground.id%>/bookings/<%=r%>/checkIn">Check-in</a>
+                </td>
+            </tr>
+        <% } %>
+        
+    
+    </tbody>
+  </table>
+<% }%>
+ 
